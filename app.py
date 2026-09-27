@@ -166,12 +166,14 @@ if st.button("Generate AI Explanation"):
     Do not invent any numbers.
     """
 
-    response = client.models.generate_content(
-        model="gemini-3.6-flash",
-        contents=prompt
-    )
-
-    st.write(response.text)
+    try:
+        response = client.models.generate_content(
+            model="gemini-3.6-flash",
+            contents=prompt
+        )
+        st.write(response.text)
+    except Exception:
+        st.error("Gemini AI is temporarily unavailable. Please try again later.")
 
 
 # ==================== Top Products ====================
